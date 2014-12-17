@@ -28,16 +28,6 @@ include FileTest
 
 task :default => 'debian:files'
 
-desc 'Clean all v8 built files'
-task :clean => :check_dir do
-  if directory?(OUT_PATH)
-    FileUtils.rm_rf OUT_PATH
-    puts 'cleaned'
-  else
-    puts 'already clean'
-  end
-end
-
 namespace :debian do
 
   task :clean do
@@ -50,7 +40,7 @@ namespace :debian do
   end
 
   desc 'Prepare debian files'
-  task :files => [:check_dir, :clean] do
+  task :files => ['src:test', :clean] do
 
     puts "mk deb tree"
     FileUtils.mkdir_p File.join(DEB_PATH, 'source')
@@ -83,9 +73,26 @@ namespace :debian do
 
 end
 
-task :check_dir do
-  exists?(TEST_FILE_V8_ROOT_DIR) || raise("Not a v8 root dir")
+namespace :src do
+
+#   desc 'Clean all v8 built files'
+#   task :clean => 'src:test' do
+#     if directory?(OUT_PATH)
+#       FileUtils.rm_rf OUT_PATH
+#       puts 'cleaned'
+#     else
+#       puts 'already clean'
+#     end
+#   end
+
+  desc 'Test for source tree'
+  task :test do
+    exists?(TEST_FILE_V8_ROOT_DIR) || raise("Not a v8 root dir")
+  end
+
+  desc 'Checkout exact tag'
+  task :checkout do
+    exec "git checkout tags/#{V8_VER}.#{V8_SUBVER}"
+  end
+
 end
-
-
-
