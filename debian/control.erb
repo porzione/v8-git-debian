@@ -1,0 +1,26 @@
+Source: libv8-<%= V8_VER %>
+Maintainer: <%= ENV['│DEBFULLNAME'] %> <<%= ENV['DEBEMAIL'] %>>
+Section: libs
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 9)
+Homepage: http://code.google.com/p/v8/
+
+Package: libv8-<%= V8_VER %>
+Architecture: amd64
+Description: V8 JavaScript engine - runtime library for latest branch
+Homepage: http://code.google.com/p/v8/
+Section: libs
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}
+
+Package: libv8-<%= V8_VER %>-dev
+Architecture: amd64
+Replaces: libv8-<%= V8_VER %>-dev
+Depends: libv8-<%= V8_VER %> (= <%= DEB_VER %>), ${misc:Depends}
+Conflicts: libv8-<%= V8_VER %>-dev
+Description: V8 JavaScript engine - development files for latest branch
+Homepage: http://code.google.com/p/v8/
+Section: libdevel
+Priority: optional
+

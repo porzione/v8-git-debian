@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+
+DEB_MAKE_BUILD_TARGET = x64.release
+DEB_MAKE_EXTRA_ARGS += -j8 library=shared snapshot=off
+DEB_MAKE_CLEAN_TARGET = clean
+
+TMP_LIB64 = debian/<%= PKG %>/usr/lib/lib-<%= V8_VER %>
+TMP_INC64 = debian/<%= PKG %>-dev/usr/include/lib-<%= V8_VER %>
+
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/class/makefile.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+#%:
+#	dh $@
+
+override_dh_auto_install:
+	$(MAKE) -j8 x64.release library=shared \
+	DESTDIR=$$(pwd)/debian/liv8-<%= V8_VER %> prefix=/usr install
+
+clean::
+	true
+	#rm -rf out
+
+common-install-impl::
+	mkdir -p ${TMP_LIB64} ; \
+  cp out/x64.release/lib.target/*.so ${TMP_LIB64} ; \
+  mkdir -p ${TMP_INC64} ; \
+  cp -a include/* ${TMP_INC64}
+
+# vi:syntax=make
