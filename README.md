@@ -13,7 +13,7 @@ And you need ruby and rake.
 Prepare v8 source tree and tools as described [here] (https://code.google.com/p/v8-wiki/wiki/UsingGit).
 Also will be helpful [this page] (https://code.google.com/p/v8-wiki/wiki/BuildingWithGYP).
 
-In source three run 
+In source tree run 
 
 ```
 rake -f ~/prog/v8deb/Rakefile src:checkout
