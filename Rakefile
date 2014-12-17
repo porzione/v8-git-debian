@@ -24,6 +24,8 @@ CMD_CHANGELOG = "dch --create -v #{DEB_VER} --package #{PKG}"
 
 TEST_FILE_V8_ROOT_DIR = 'LICENSE.v8'
 
+NPROC = `nproc`.to_i
+
 include FileTest
 
 task :default => 'debian:files'
