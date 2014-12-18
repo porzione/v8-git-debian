@@ -26,4 +26,20 @@ inspect output and `debian` folder. If everything is ok then run
 dpkg-buildpackage -nc
 ```
 
+### vagrant scripts
+
+prepare vagrant box
+
+`vagrant box add debian77 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.7_chef-provisionerless.box`
+
+scripts called by `vagrant provision`
+
+`provision.sh` install all dev dependencies
+`user_provision.sh` install rbenv and ruby for vagrant user
+
+user scripts, located in /vagrant inside the box
+
+`build_v8.sh` build v8 debian package, consider to run the larger box with `VBOX=LARGE vagrant up` with real nproc cpu count and 8 GB RAM
+`build_h8.sh` build hybrid8 ruby gem` 
+
 

@@ -1,17 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 ## ruby stuff
 
 VERSION=2.1.5
 
 if [ ! -d ~/.rbenv ]; then
-  vagrant git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 else
   cd ~/.rbenv && git pull
 fi
 
 if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
-  vagrant git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 else
   cd ~/.rbenv/plugins/ruby-build && git pull
 fi
