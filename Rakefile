@@ -6,8 +6,8 @@ RUN_PATH = File.dirname __FILE__
 OUT_PATH = 'out'
 DEB_PATH = 'debian'
 
-V8_VER = ENV['V8_VER'] || '3.30'
-V8_SUBVER = ENV['V8_SUBVER'] || '37'
+V8_VER = ENV['V8_VER'] || '3.31'
+V8_SUBVER = ENV['V8_SUBVER'] || '66'
 
 DEB_SUBVER = ENV['DEB_SUBVER'] || '1'
 DEB_VER = "#{V8_VER}.#{V8_SUBVER}-#{DEB_SUBVER}"
@@ -94,6 +94,7 @@ namespace :src do
 
   desc 'Checkout exact tag'
   task :checkout do
+    exec "git fetch"
     exec "git checkout tags/#{V8_VER}.#{V8_SUBVER}"
   end
 
