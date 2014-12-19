@@ -6,6 +6,8 @@ export LANG=C
 sudo cp /vagrant/sources.ru.list /etc/apt/sources.list
 sudo cp /vagrant/fiamme.list /etc/apt/sources.list.d
 
+sudo echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/99translations
+
 curl http://debian.fiam.me/fiamme.gpg | sudo apt-key add -
 
 apt-get update #&& apt-get -y dist-upgrade --force-yes
@@ -14,7 +16,7 @@ apt-get -y purge exim4 exim4-base exim4-config exim4-daemon-light bsd-mailx xmai
 
 apt-get install -y \
 openssl curl git gcc g++ dpkg-dev devscripts cdbs debhelper \
-make autoconf bison \
+make autoconf bison subversion \
 libssl-dev libcurl4-openssl-dev zlib1g-dev libreadline-dev \
 libsqlite3-dev \
 libxml2-dev libyaml-dev libxslt1-dev libgmp-dev  \

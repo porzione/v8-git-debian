@@ -7,7 +7,10 @@ OUT_PATH = 'out'
 DEB_PATH = 'debian'
 
 V8_VER = ENV['V8_VER'] || '3.31'
-V8_SUBVER = ENV['V8_SUBVER'] || '66'
+V8_SUBVER = ENV['V8_SUBVER'] || '67'
+
+#V8_VER = ENV['V8_VER'] || '3.30'
+#V8_SUBVER = ENV['V8_SUBVER'] || '37'
 
 DEB_SUBVER = ENV['DEB_SUBVER'] || '1'
 DEB_VER = "#{V8_VER}.#{V8_SUBVER}-#{DEB_SUBVER}"
@@ -77,16 +80,6 @@ end
 
 namespace :src do
 
-#   desc 'Clean all v8 built files'
-#   task :clean => 'src:test' do
-#     if directory?(OUT_PATH)
-#       FileUtils.rm_rf OUT_PATH
-#       puts 'cleaned'
-#     else
-#       puts 'already clean'
-#     end
-#   end
-
   desc 'Test for source tree'
   task :test do
     exists?(TEST_FILE_V8_ROOT_DIR) || raise("Not a v8 root dir")
@@ -94,8 +87,9 @@ namespace :src do
 
   desc 'Checkout exact tag'
   task :checkout do
-    exec "git fetch"
-    exec "git checkout tags/#{V8_VER}.#{V8_SUBVER}"
+    sh "git checkout -f master"
+    sh "git pull"
+    sh "git checkout tags/#{V8_VER}.#{V8_SUBVER}"
   end
 
 end
