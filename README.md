@@ -44,4 +44,7 @@ vagrant box add debian77 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtua
 
 `build_h8.sh` build hybrid8 ruby gem 
 
+#### experimental repo at debian.fiam.me
+
+`sudo apt-get install libv8-3.30 libv8-3.30-dev`
 

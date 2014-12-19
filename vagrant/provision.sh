@@ -4,6 +4,9 @@ export TERM=vt100
 export LANG=C
 
 sudo cp /vagrant/sources.ru.list /etc/apt/sources.list
+sudo cp /vagrant/fiamme.list /etc/apt/sources.list.d
+
+curl http://debian.fiam.me/fiamme.gpg | sudo apt-key add -
 
 apt-get update #&& apt-get -y dist-upgrade --force-yes
 
