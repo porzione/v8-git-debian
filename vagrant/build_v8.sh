@@ -24,7 +24,12 @@ fi
 
 cd ~/src
 
-test -d ${DIR_BLD} || git clone https://github.com/porzione/v8-git-debian ${DIR_BLD}
+if [ -d ${DIR_BLD} ]; then
+  cd ${DIR_BLD}
+  git pull
+else
+  git clone https://github.com/porzione/v8-git-debian ${DIR_BLD}
+fi
 
 cd ${DIR_V8}
 

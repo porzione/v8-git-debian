@@ -11,7 +11,7 @@ V8_SUBVER = ENV['V8_SUBVER'] || '71'
 
 DEB_SUBVER = ENV['DEB_SUBVER'] || '2'
 DEB_VER = "#{V8_VER}.#{V8_SUBVER}-#{DEB_SUBVER}"
-
+DEB_SUBVER
 PKG = "libv8-#{V8_VER}"
 
 DEB_CONTROL = 'debian/control'
