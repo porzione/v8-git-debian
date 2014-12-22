@@ -20,5 +20,9 @@ else
   cd $NAME
 fi
 
-rake compile
+find lib -name *.so -delete
+echo Complile
+rake clean compile
+echo RSpec
+rspec
 

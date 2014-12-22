@@ -26,6 +26,7 @@ clean::
 common-install-impl::
 	mkdir -p ${TMP_LIB64} ; \
 	cp out/x64.release/obj.target/tools/gyp/*.a ${TMP_LIB64} ; \
+	cp out/x64.release/obj.target/third_party/icu/*.a ${TMP_LIB64} ; \
 	for lib in `find ${TMP_LIB64} -name '*.a'`; do ar -t $$lib | xargs ar rvs $$lib.new && mv -v $$lib.new $$lib; done ; \
 	mkdir -p ${TMP_INC64} ; \
 	cp -a include/ ${TMP_INC64}

@@ -27,5 +27,5 @@ fi
 rbenv install -s ${VERSION}
 rbenv global  ${VERSION}
 
-gem install --conservative bundler rake rake-compiler
+gem install --conservative bundler rake rake-compiler rspec
 

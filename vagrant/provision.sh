@@ -20,7 +20,9 @@ make autoconf bison subversion \
 libssl-dev libcurl4-openssl-dev zlib1g-dev libreadline-dev \
 libsqlite3-dev \
 libxml2-dev libyaml-dev libxslt1-dev libgmp-dev  \
-ssh tmux vim-tiny python-dev libpq-dev 
+ssh tmux vim python-dev libpq-dev 
+
+update-alternatives --set editor /usr/bin/vim
 
 sudo apt-get -y --purge autoremove
 
