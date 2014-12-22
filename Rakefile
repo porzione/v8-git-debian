@@ -7,9 +7,9 @@ OUT_PATH = 'out'
 DEB_PATH = 'debian'
 
 V8_VER = ENV['V8_VER'] || '3.31'
-V8_SUBVER = ENV['V8_SUBVER'] || '71'
+V8_SUBVER = ENV['V8_SUBVER'] || '72'
 
-DEB_SUBVER = ENV['DEB_SUBVER'] || '3'
+DEB_SUBVER = ENV['DEB_SUBVER'] || '1'
 DEB_VER = "#{V8_VER}.#{V8_SUBVER}-#{DEB_SUBVER}"
 DEB_SUBVER
 PKG = "libv8-#{V8_VER}"

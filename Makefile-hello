@@ -1,5 +1,5 @@
 hello:
-	g++ hello.cpp -o hello -I/usr/include/libv8-3.31 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/libv8-3.31 -lpthread -licuuc -licui18n -lv8_base -lv8_libbase -lv8_libplatform -lv8_nosnapshot
+	g++ hello.cpp -o hello -I/usr/include/libv8-3.31 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/libv8-3.31 -lpthread -lrt -licuuc -licui18n -lv8_base -lv8_libbase -lv8_libplatform -lv8_nosnapshot
 
 clean:
 	rm hello
