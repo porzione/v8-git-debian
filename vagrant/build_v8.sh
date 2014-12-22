@@ -5,8 +5,6 @@ DIR_BLD=~/src/v8deb
 
 ## v8 git
 
-sudo apt-get -y install gyp
-
 test -d ~/depot_tools || git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 grep 'depot_tools' ~/.bash_profile || echo 'export PATH="$HOME/depot_tools:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
@@ -15,9 +13,9 @@ test -d ~/src || mkdir ~/src
 cd ~/src
 
 if [ -d v8 ]; then
-  #gclient sync
   cd v8
-  git fetch
+  git checkout -f master
+  git pull
 else
   fetch v8
 fi

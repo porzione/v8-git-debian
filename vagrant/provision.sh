@@ -22,5 +22,7 @@ libsqlite3-dev \
 libxml2-dev libyaml-dev libxslt1-dev libgmp-dev  \
 ssh tmux vim-tiny python-dev libpq-dev 
 
+sudo apt-get -y --purge autoremove
+
 sudo -u vagrant /vagrant/user_provision.sh
 
