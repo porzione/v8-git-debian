@@ -46,5 +46,5 @@ vagrant box add debian77 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtua
 
 #### experimental repo at debian.fiam.me
 
-`sudo apt-get install libv8-3.31 libv8-3.31-dev`
+`sudo apt-get install libv8-3.xx-dev`
 

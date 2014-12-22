@@ -4,23 +4,30 @@ DEB_MAKE_BUILD_TARGET = x64.release
 DEB_MAKE_EXTRA_ARGS += -j<%= NPROC %>
 DEB_MAKE_CLEAN_TARGET = clean
 
-TMP_LIB64 = debian/<%= PKG %>/usr/lib/libv8-<%= V8_VER %>
+TMP_LIB64 = debian/<%= PKG %>-dev/usr/lib/libv8-<%= V8_VER %>
 TMP_INC64 = debian/<%= PKG %>-dev/usr/include/libv8-<%= V8_VER %>
 
 include /usr/share/cdbs/1/rules/utils.mk
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
+CXXFLAGS += -fPIC
+LDFLAGS += -fPIC
+
+export CXXFLAGS
+export LDFLAGS
+
 override_dh_auto_install:
-	$(MAKE) library=shared
+	{MAKE)
 
 clean::
 	rm -rf out
 
 common-install-impl::
 	mkdir -p ${TMP_LIB64} ; \
-  cp out/x64.release/lib.target/*.so ${TMP_LIB64} ; \
-  mkdir -p ${TMP_INC64} ; \
-  cp -a include/ ${TMP_INC64}
+	cp out/x64.release/obj.target/tools/gyp/*.a ${TMP_LIB64} ; \
+	for lib in `find ${TMP_LIB64} -name '*.a'`; do ar -t $$lib | xargs ar rvs $$lib.new && mv -v $$lib.new $$lib; done ; \
+	mkdir -p ${TMP_INC64} ; \
+	cp -a include/ ${TMP_INC64}
 
 # vi:syntax=make
