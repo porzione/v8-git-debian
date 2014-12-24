@@ -25,9 +25,13 @@ CMD_CHANGELOG = %Q(dch --create "#{GIT_VER}" -v #{DEB_VER} --package #{PKG})
 
 TEST_FILE_V8_ROOT_DIR = 'LICENSE.v8'
 
-NPROC = `nproc`.to_i
-
 include FileTest
+
+NPROC = begin
+  `nproc`.to_i
+rescue
+  2
+end
 
 task :default => 'debian:files'
 
