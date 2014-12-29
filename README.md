@@ -32,6 +32,13 @@ prepare vagrant box
 vagrant box add debian77 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.7_chef-provisionerless.box
 ```
 
+or dangerous
+
+
+```
+vagrant box add debian80 https://downloads.sourceforge.net/project/vagrantboxjessie/debian80.box
+```
+
 #### scripts called by `vagrant provision`
 
 `provision.sh` install all dev dependencies
