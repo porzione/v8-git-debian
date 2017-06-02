@@ -61,5 +61,5 @@ echo "deb [arch=amd64] http://debian.fiam.me wheezy main" > /etc/apt/sources.lis
 install package
 ```
 sudo apt-get update
-sudo apt-get install libv8-3.xx-dev
+sudo apt-get install libv8-3.31-dev
 ```
