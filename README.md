@@ -53,5 +53,13 @@ vagrant box add debian80 https://downloads.sourceforge.net/project/vagrantboxjes
 
 #### experimental repo at debian.fiam.me
 
+add repo key
+`curl http://debian.fiam.me/fiamme.gpg | sudo apt-key add -`
+
+add apt source
+`echo "deb [arch=amd64] http://debian.fiam.me wheezy main" > /etc/apt/sources.list.d/fiamme.list`
+
+install package
+`sudo apt-get update`
 `sudo apt-get install libv8-3.xx-dev`
 
