@@ -1,42 +1,37 @@
-Debian packaging for latest google V8 library
+Debian packaging for latest google V8 library (WIP)
 ===========
 
-**Don't use built packages in production, please. For testing purposes only, amd64 only (google calls this x64)**
+### manually build Debian package
 
-### in short
+Prerequisites
 
-You need Debian stuff: build-essential, debhelper, cdbs, etc.
-And you need ruby and rake.
+Debian tools: ```apt-get install build-essential debhelper devscripts cdbs clang-3.5```
 
-Prepare v8 source tree and tools as described in https://github.com/v8/v8/wiki/Building-from-Source
-Also will be helpful https://github.com/v8/v8/wiki/Building-with-Gyp
+Ruby language and rake gem.
 
-In source tree run 
+Prepare v8 source tree and tools as described in https://github.com/v8/v8/wiki/Building-from-Source.
+
+Execute in source tree:
 
 ```
-rake -f ~/prog/v8deb/Rakefile src:checkout
-rake -f ~/prog/v8deb/Rakefile debian:files
+rake -f ~/v8-git-debian/Rakefile src:checkout
+rake -f ~/v8-git-debian/Rakefile debian:files
 ```
 
-inspect output and `debian` folder. If everything is ok then run
+inspect output and `debian` folder then run
 
 ```
 dpkg-buildpackage -nc
 ```
 
-### vagrant scripts
+### automatic provision and build in Vagrant/Debian
+
 
 prepare vagrant box
 
 ```
-vagrant box add debian77 http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.7_chef-provisionerless.box
-```
+vagrant box add debian87 https://atlas.hashicorp.com/bento/boxes/debian-8.7/versions/2.3.4/providers/virtualbox.box
 
-or dangerous
-
-
-```
-vagrant box add debian80 https://downloads.sourceforge.net/project/vagrantboxjessie/debian80.box
 ```
 
 #### scripts called by `vagrant provision`
