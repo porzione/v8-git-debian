@@ -5,11 +5,11 @@ Debian packaging for latest google V8 library
 
 ### in short
 
-You need debian stuff: build-essential, debhelper, cdbs, etc.
+You need Debian stuff: build-essential, debhelper, cdbs, etc.
 And you need ruby and rake.
 
-Prepare v8 source tree and tools as described [here] (https://code.google.com/p/v8-wiki/wiki/UsingGit).
-Also will be helpful [this page] (https://code.google.com/p/v8-wiki/wiki/BuildingWithGYP).
+Prepare v8 source tree and tools as described in https://github.com/v8/v8/wiki/Building-from-Source
+Also will be helpful https://github.com/v8/v8/wiki/Building-with-Gyp
 
 In source tree run 
 
@@ -47,19 +47,24 @@ vagrant box add debian80 https://downloads.sourceforge.net/project/vagrantboxjes
 
 #### user scripts, located in /vagrant inside the box
 
-`build_v8.sh` build v8 debian package, consider to run the larger box with `VBOX=LARGE vagrant up` with real nproc cpu count and 8 GB RAM
+`build_v8.sh` build v8 Debian package, consider to run the larger box with `VBOX=LARGE vagrant up` with real nproc cpu count and 8 GB RAM
 
 `build_h8.sh` build hybrid8 ruby gem 
 
 #### experimental repo at debian.fiam.me
 
 add repo key
-`curl http://debian.fiam.me/fiamme.gpg | sudo apt-key add -`
+```
+curl http://debian.fiam.me/fiamme.gpg | sudo apt-key add -
+```
 
 add apt source
-`echo "deb [arch=amd64] http://debian.fiam.me wheezy main" > /etc/apt/sources.list.d/fiamme.list`
+```
+echo "deb [arch=amd64] http://debian.fiam.me wheezy main" > /etc/apt/sources.list.d/fiamme.list
+```
 
 install package
-`sudo apt-get update`
-`sudo apt-get install libv8-3.xx-dev`
-
+```
+sudo apt-get update
+sudo apt-get install libv8-3.xx-dev
+```
