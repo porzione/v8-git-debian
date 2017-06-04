@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TERM=vt100
+TERM=xterm-256color
 LANG=C
 DEBIAN_FRONTEND=noninteractive
 
@@ -25,5 +25,5 @@ libxml2-dev libyaml-dev libxslt1-dev libgmp-dev libexpat1-dev python-dev
 
 update-alternatives --set editor /usr/bin/vim.basic
 
-sudo -u vagrant /vagrant/user_provision.sh
-
+sudo -u vagrant /vagrant/build_rubies.sh
+sudo -u vagrant /vagrant/build_v8.sh

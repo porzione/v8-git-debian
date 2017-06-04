@@ -1,8 +1,9 @@
 #!/bin/bash
 
 ## ruby stuff
+echo Build rubies
 
-VERSION=2.1.5
+declare -a versions=(2.2.2 2.3.1) # 2.1.5 2.4.1
 
 if [ ! -d ~/.rbenv ]; then
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -19,14 +20,20 @@ fi
 which rbenv #>& /dev/null
 
 if [ $? != 0 ]; then
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+  rm -rf "$HOME/.rbenv"
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' > ~/.bash_profile
   echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
   source ~/.bash_profile
+else
+  eval "$(rbenv init -)"
 fi
 
-rbenv install -s ${VERSION}
-rbenv global  ${VERSION}
+for ruby in "${versions[@]}"
+do
+  echo "installing $ruby"
+  rbenv install -s $ruby
+  rbenv shell $ruby
+  gem install --conservative bundler rake rake-compiler rspec hashie pargser
+done
 
-gem install --conservative bundler rake rake-compiler rspec
-
-mkdir ~/src
+rbenv global ${versions[-1]}

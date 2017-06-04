@@ -30,23 +30,26 @@ dpkg-deb: building package 'libv8-3.31-dev' in '../libv8-3.31-dev_3.31.72-2_amd6
 ```
 and you can install this package in Debian 7/8
 
-#### 2. auto build Debian package in Vagrant/Debian
+#### 2. build Debian package in Vagrant
 
-prepare vagrant box
+prepare vagrant box with Debian Jessie
 
 ```
 vagrant box add debian/jessie64
+cd vagrant.jessie
+vagrant up
 
 ```
-scripts called by `vagrant provision`:
+scripts called by `vagrant provision` during `vagrant up`:
 
 `provision.sh` install all dev dependencies  
-`user_provision.sh` install rbenv and ruby for vagrant user
+`user_provision.sh` install rbenv and rubies, see versions inside
 
-user scripts, located in /vagrant inside the box:
+user scripts in /vagrant inside the box:
 
-`build_v8.sh` build v8 Debian package, consider to run the larger box with `VBOX=LARGE vagrant up` with real nproc cpu count and 8 GB RAM  
-`build_h8.sh` build hybrid8 ruby gem 
+`build_v8.sh` build v8 Debian package
+`build_h8.sh <REPO> <RUBY_VERSION}` build hybrid8 ruby gem, for example  
+`build_h8.sh https://github.com/sergeych/hybrid8 2.3.1`
 
 ##### 3. install from experimental repo
 

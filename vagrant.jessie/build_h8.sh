@@ -1,17 +1,28 @@
 #!/bin/bash
 
-## build h8 https://github.com/sergeych/hybrid8 or forks
+## repos:
+## https://github.com/sergeych/hybrid8
+## https://github.com/porzione/hybrid8
 
-REPO=$1
+echo Build h8
 
-if [ -z "$REPO" ]; then
-  echo "git repo url is required"
+if [ "$#" -ne 2 ] ; then
+  echo "usage: $0 REPO RUBY_VERSION"
   exit 1
 fi
 
+REPO=$1
+RUBY=$2
+
+eval "$(rbenv init -)"
+rbenv shell "${RUBY}"
+
 NAME=`ruby -r uri -e "print URI::parse(ARGV[0]).path[1..-1].gsub('/', '_')" $REPO`
 echo BUILD FOR: $NAME
-cd ~/src
+
+test -d ~src || mkdir ~src
+cd ~src
+
 if [ -d $NAME ]; then
   cd $NAME
   git pull
