@@ -25,5 +25,6 @@ libxml2-dev libyaml-dev libxslt1-dev libgmp-dev libexpat1-dev python-dev
 
 update-alternatives --set editor /usr/bin/vim.basic
 
-sudo -u vagrant /vagrant/build_rubies.sh
-sudo -u vagrant /vagrant/build_v8.sh
+sudo -u vagrant cp -a /vagrant/home/ /home/vagrant
+sudo -iu vagrant /vagrant/build_rubies.sh
+sudo -iu vagrant /vagrant/build_v8.sh

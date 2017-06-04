@@ -44,6 +44,7 @@ fi
 
 cd ~/v8
 
+source ~/.bash_profile
 rake -f ${DEB_BUILD_DIR}/Rakefile src:checkout
 rake -f ${DEB_BUILD_DIR}/Rakefile debian:files
 
