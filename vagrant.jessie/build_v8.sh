@@ -13,7 +13,7 @@ pushd ~
 if [ ! -d "${DT_DIR}" ] ; then
   echo "Install depot_tools"
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-  grep 'depot_tools' ~/.bash_profile || echo 'export PATH="${DT_DIR}:$PATH"' >> ~/.bash_profile
+  grep 'depot_tools' ~/.bash_profile || echo "export PATH=${DT_DIR}:$PATH" >> ~/.bash_profile
   source ~/.bash_profile
   gclient
 fi
@@ -29,6 +29,8 @@ if [ -d v8 ]; then
   git pull
 else
   echo "Get v8"
+  rm .gclient .gclient_entries >& /dev/null
+  rm -rf .gsutil >& /dev/null
   fetch v8
   cd v8
 fi
@@ -49,6 +51,8 @@ rake -f ${DEB_BUILD_DIR}/Rakefile src:checkout
 rake -f ${DEB_BUILD_DIR}/Rakefile debian:files
 
 dpkg-buildpackage -nc
+sudo dpkg -i ~/*.deb
+sudo apt-get -y -f install
 
 popd
 
