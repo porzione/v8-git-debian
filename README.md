@@ -32,10 +32,10 @@ and you can install this package in Debian 7/8
 
 #### 2. auto build Debian package in Vagrant/Debian
 
-prepare vagrant box, you can try other boxes
+prepare vagrant box
 
 ```
-vagrant box add debian87 https://atlas.hashicorp.com/bento/boxes/debian-8.7/versions/2.3.4/providers/virtualbox.box
+vagrant box add debian/jessie64
 
 ```
 scripts called by `vagrant provision`:

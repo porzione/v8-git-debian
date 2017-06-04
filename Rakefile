@@ -93,6 +93,7 @@ namespace :src do
     sh "git checkout -f master"
     sh "git pull"
     sh "git checkout tags/#{V8_VER}.#{V8_SUBVER}"
+    sh "gclient sync"
   end
 
 end

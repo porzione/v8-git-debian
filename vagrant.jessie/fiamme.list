@@ -1,2 +1,1 @@
-deb [arch=amd64] http://debian.fiam.me wheezy main
-
+deb [arch-=i386] http://debian.fiam.me jessie main
