@@ -50,7 +50,7 @@ source ~/.bash_profile
 rake -f ${DEB_BUILD_DIR}/Rakefile src:checkout
 rake -f ${DEB_BUILD_DIR}/Rakefile debian:files
 
-dpkg-buildpackage -nc
+dpkg-buildpackage -nc -us
 sudo dpkg -i ~/*.deb
 sudo apt-get -y -f install
 
